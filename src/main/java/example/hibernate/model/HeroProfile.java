@@ -21,6 +21,9 @@ public class HeroProfile {
     @Column(name = "birth_date")
     private Date dateOfBirth;
 
+    @OneToOne(fetch=FetchType.LAZY, mappedBy="profile")
+    private Hero hero;
+
     public HeroProfile() {
     }
 
@@ -28,6 +31,14 @@ public class HeroProfile {
         this.phoneNumber = phoneNumber;
         this.gender = gender;
         this.dateOfBirth = dateOfBirth;
+    }
+
+    public void setHero(Hero hero) {
+        this.hero = hero;
+    }
+
+    public Hero getHero() {
+        return hero;
     }
 
     @Override

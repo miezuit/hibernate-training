@@ -50,6 +50,8 @@ public class Application implements CommandLineRunner {
 
         System.out.println(hero.getProfile());
 
+        System.out.println(hero.getProfile().getHero());
+
         heroes = repository.findHeroesByGender(Gender.MALE);
 
         heroes.stream().forEach(System.out::println);
@@ -65,6 +67,8 @@ public class Application implements CommandLineRunner {
         );
 
         Hero superman = new Hero("Superman", 1000, 2000, profile);
+
+        profile.setHero(superman);
 
         repository.save(superman);
     }
