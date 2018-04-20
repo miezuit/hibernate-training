@@ -1,8 +1,6 @@
 package example.hibernate.application;
 
-import example.hibernate.model.Gender;
 import example.hibernate.model.Hero;
-import example.hibernate.model.HeroProfile;
 import example.hibernate.repository.HeroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -15,8 +13,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.io.IOException;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 @SpringBootApplication
@@ -47,24 +43,12 @@ public class Application implements CommandLineRunner {
         Hero hero = repository.findFirstByName("Superman");
 
         System.out.println(hero);
-
-        System.out.println(hero.getProfile());
-
-        heroes = repository.findHeroesByGender(Gender.MALE);
-
-        heroes.stream().forEach(System.out::println);
     }
 
     @Transactional
     protected void save() {
 
-        HeroProfile profile = new HeroProfile(
-                "0734890178",
-                Gender.MALE,
-                new GregorianCalendar(1938, Calendar.FEBRUARY, 29).getTime()
-        );
-
-        Hero superman = new Hero("Superman", 1000, 2000, profile);
+        Hero superman = new Hero("Superman", 1000, 2000);
 
         repository.save(superman);
     }
