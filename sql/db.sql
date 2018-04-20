@@ -5,12 +5,11 @@ create table hero (
   id int not null auto_increment primary key,
   name varchar(30),
   life int,
-  power int,
-  profile_id int not null
+  power int
 );
-create table hero_profile (
+create table item (
   id int not null auto_increment primary key,
-  phone_number varchar(15),
-  gender varchar(6),
-  birth_date datetime
+  name varchar(30),
+  power int,
+  hero_id int not null
 );

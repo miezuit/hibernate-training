@@ -1,7 +1,8 @@
 package example.hibernate.model;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "hero")
@@ -16,35 +17,27 @@ public class Hero {
     @Column(name = "power")
     private Integer power;
 
-    public String getName() {
-        return name;
-    }
-
-    public Integer getLife() {
-        return life;
-    }
-
-    public Integer getPower() {
-        return power;
-    }
-
-    @OneToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name="profile_id")
-    private HeroProfile profile;
+    @OneToMany(mappedBy="owner", cascade = CascadeType.ALL)
+    private List<Item> items = new ArrayList<>();
 
     public Hero() {
     }
 
-    public Hero(String name, Integer life, Integer power, HeroProfile profile
+    public Hero(String name, Integer life, Integer power
                 ) {
         this.life = life;
         this.power = power;
         this.name = name;
-        this.profile = profile;
     }
 
-    public HeroProfile getProfile() {
-        return this.profile;
+    public void addItem(String name, Integer power) {
+        Item item = new Item(name, power, this);
+
+        items.add(item);
+    }
+
+    public List<Item> getItems() {
+        return items;
     }
 
     @Override

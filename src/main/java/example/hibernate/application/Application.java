@@ -1,8 +1,7 @@
 package example.hibernate.application;
 
-import example.hibernate.model.Gender;
 import example.hibernate.model.Hero;
-import example.hibernate.model.HeroProfile;
+import example.hibernate.model.Item;
 import example.hibernate.repository.HeroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -48,27 +47,16 @@ public class Application implements CommandLineRunner {
 
         System.out.println(hero);
 
-        System.out.println(hero.getProfile());
-
-        System.out.println(hero.getProfile().getHero());
-
-        heroes = repository.findHeroesByGender(Gender.MALE);
-
-        heroes.stream().forEach(System.out::println);
+        System.out.println(hero.getItems());
     }
 
     @Transactional
     protected void save() {
 
-        HeroProfile profile = new HeroProfile(
-                "0734890178",
-                Gender.MALE,
-                new GregorianCalendar(1938, Calendar.FEBRUARY, 29).getTime()
-        );
+        Hero superman = new Hero("Superman", 1000, 2000);
 
-        Hero superman = new Hero("Superman", 1000, 2000, profile);
-
-        profile.setHero(superman);
+        superman.addItem("Superman Costume", 1000);
+        superman.addItem("Magic Sword", 5000);
 
         repository.save(superman);
     }
