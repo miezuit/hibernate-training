@@ -22,8 +22,8 @@ public interface HeroRepository extends JpaRepository<Hero, Long> {
 
     List<Hero> findHeroesByPowerBetween(Integer smallerPower, Integer biggerPower);
 
-//    @Query("SELECT h FROM Hero h WHERE h.profile.gender = :gender")
-//    List<Hero> findHeroesByGender(@Param("gender") Gender gender);
+    @Query("SELECT h FROM Hero h WHERE h.profile.gender = :gender")
+    List<Hero> findHeroesByGender(@Param("gender") Gender gender);
 
     @Query("SELECT h FROM Hero h WHERE h.life = 0")
     List<Hero> findDeadHeroes();

@@ -1,4 +1,4 @@
-drop database heroes;
+drop database if exists heroes;
 create database heroes;
 use heroes;
 create table hero (

@@ -28,25 +28,24 @@ public class Hero {
         return power;
     }
 
-    //    @OneToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
-//    @JoinColumn(name="profile_id")
-//    //private HeroProfile profile;
+    @OneToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name="profile_id")
+    private HeroProfile profile;
 
     public Hero() {
     }
 
-    public Hero(String name, Integer life, Integer power
-            //, //HeroProfile profile
+    public Hero(String name, Integer life, Integer power, HeroProfile profile
                 ) {
         this.life = life;
         this.power = power;
         this.name = name;
-        //this.profile = profile;
+        this.profile = profile;
     }
 
-//    public HeroProfile getProfile() {
-//        //return this.profile;
-//    }
+    public HeroProfile getProfile() {
+        return this.profile;
+    }
 
     @Override
     public String toString() {
