@@ -1,7 +1,9 @@
 package example.hibernate.application;
 
 import example.hibernate.model.Hero;
+import example.hibernate.model.Villain;
 import example.hibernate.repository.HeroRepository;
+import example.hibernate.repository.VillainRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -23,24 +25,26 @@ import java.util.List;
 public class Application implements CommandLineRunner {
 
     private final HeroRepository repository;
+    private final VillainRepository villainRepository;
 
     @Autowired
-    public Application(HeroRepository repository) {
+    public Application(HeroRepository repository, VillainRepository villainRepository) {
         this.repository = repository;
+        this.villainRepository = villainRepository;
     }
 
     @Override
     @Transactional
     public void run(String... args) throws IOException {
         save();
-        showHeroes();
+        //showHeroes();
     }
 
     @Transactional
     protected void showHeroes() {
         List<Hero> heroes;
 
-        Hero hero = repository.findFirstByName("Superman");
+        Hero hero = repository.findFirstByName("Batman");
 
         System.out.println(hero);
     }
@@ -48,9 +52,15 @@ public class Application implements CommandLineRunner {
     @Transactional
     protected void save() {
 
-        Hero superman = new Hero("Superman", 1000, 2000);
+        Hero batman = new Hero("Batman", 500, 1000);
 
-        repository.save(superman);
+        Villain joker = new Villain("Joker", 300, 700);
+        Villain catWoman = new Villain("Cat Woman", 200, 300);
+
+        batman.addEnemy(joker);
+        batman.addEnemy(catWoman);
+
+        repository.save(batman);
     }
 
     public static void main(String[] args) {
