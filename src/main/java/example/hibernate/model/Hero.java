@@ -36,6 +36,10 @@ public class Hero {
         items.add(item);
     }
 
+    public void removeItem(Item item) {
+        items.remove(item);
+    }
+
     public List<Item> getItems() {
         return items;
     }
