@@ -3,8 +3,7 @@ package example.hibernate.model;
 import javax.persistence.*;
 
 @Entity
-@Inheritance
-@DiscriminatorColumn(name="type")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Hero {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
