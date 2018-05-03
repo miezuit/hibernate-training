@@ -5,16 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "hero")
 public class Hero {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "name")
     private String name;
-    @Column(name = "life")
     private Integer life;
-    @Column(name = "power")
     private Integer power;
 
     public Hero() {
