@@ -1,6 +1,8 @@
 package example.hibernate.application;
 
+import example.hibernate.model.ExtraterrestrialHero;
 import example.hibernate.model.Hero;
+import example.hibernate.model.LocalHero;
 import example.hibernate.repository.HeroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -37,20 +39,26 @@ public class Application implements CommandLineRunner {
     }
 
     @Transactional
+    protected void save() {
+
+        Hero superman = new LocalHero("Superman", 1000, 2000, "New York");
+        Hero thor = new ExtraterrestrialHero("Thor", 1000, 1900, "Asgard");
+
+        repository.save(superman);
+        repository.save(thor);
+    }
+
+    @Transactional
     protected void showHeroes() {
         List<Hero> heroes;
 
         Hero hero = repository.findFirstByName("Superman");
 
         System.out.println(hero);
-    }
 
-    @Transactional
-    protected void save() {
+        hero = repository.findFirstByName("Thor");
 
-        Hero superman = new Hero("Superman", 1000, 2000);
-
-        repository.save(superman);
+        System.out.println(hero);
     }
 
     public static void main(String[] args) {

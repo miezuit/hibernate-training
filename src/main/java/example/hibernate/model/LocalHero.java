@@ -1,5 +1,10 @@
 package example.hibernate.model;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("local")
 public class LocalHero extends Hero {
 
     private String residenceCity;
@@ -12,4 +17,10 @@ public class LocalHero extends Hero {
         this.residenceCity = residenceCity;
     }
 
+    @Override
+    public String toString() {
+        return "LocalHero{" +
+                super.toString() + ", residenceCity='" + residenceCity + '\'' +
+                '}';
+    }
 }
