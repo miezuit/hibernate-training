@@ -1,10 +1,10 @@
 package example.hibernate.model;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
+@Inheritance
+@DiscriminatorColumn(name="type")
 public class Hero {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
