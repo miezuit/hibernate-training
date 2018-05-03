@@ -3,10 +3,9 @@ package example.hibernate.model;
 import javax.persistence.*;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-public class Hero {
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+abstract public class Hero {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private Integer life;
@@ -15,8 +14,9 @@ public class Hero {
     public Hero() {
     }
 
-    public Hero(String name, Integer life, Integer power
+    public Hero(Long id, String name, Integer life, Integer power
                 ) {
+        this.id = id;
         this.life = life;
         this.power = power;
         this.name = name;

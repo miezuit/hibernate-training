@@ -4,7 +4,6 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
-@DiscriminatorValue("local")
 public class LocalHero extends Hero {
 
     private String residenceCity;
@@ -12,8 +11,8 @@ public class LocalHero extends Hero {
     private LocalHero() {
     }
 
-    public LocalHero(String name, Integer life, Integer power, String residenceCity) {
-        super(name, life, power);
+    public LocalHero(Long id, String name, Integer life, Integer power, String residenceCity) {
+        super(id, name, life, power);
         this.residenceCity = residenceCity;
     }
 

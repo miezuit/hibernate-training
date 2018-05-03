@@ -41,8 +41,8 @@ public class Application implements CommandLineRunner {
     @Transactional
     protected void save() {
 
-        Hero superman = new LocalHero("Superman", 1000, 2000, "New York");
-        Hero thor = new ExtraterrestrialHero("Thor", 1000, 1900, "Asgard");
+        Hero superman = new LocalHero(1L, "Superman", 1000, 2000, "New York");
+        Hero thor = new ExtraterrestrialHero(2L, "Thor", 1000, 1900, "Asgard");
 
         repository.save(superman);
         repository.save(thor);

@@ -4,7 +4,6 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
-@DiscriminatorValue("extra")
 public class ExtraterrestrialHero extends Hero {
 
     private String residencePlanet;
@@ -12,8 +11,8 @@ public class ExtraterrestrialHero extends Hero {
     private ExtraterrestrialHero() {
     }
 
-    public ExtraterrestrialHero(String name, Integer life, Integer power, String residencePlanet) {
-        super(name, life, power);
+    public ExtraterrestrialHero(Long id, String name, Integer life, Integer power, String residencePlanet) {
+        super(id, name, life, power);
         this.residencePlanet = residencePlanet;
     }
 
