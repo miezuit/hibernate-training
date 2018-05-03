@@ -4,17 +4,15 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "hero")
 public class Hero {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "name")
     private String name;
-    @Column(name = "life")
     private Integer life;
-    @Column(name = "power")
     private Integer power;
+    @Embedded
+    private HeroProfile profile;
 
     public String getName() {
         return name;
@@ -27,10 +25,6 @@ public class Hero {
     public Integer getPower() {
         return power;
     }
-
-    @OneToOne(fetch=FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name="profile_id")
-    private HeroProfile profile;
 
     public Hero() {
     }
@@ -49,6 +43,12 @@ public class Hero {
 
     @Override
     public String toString() {
-        return "Hero{" + "id=" + id + ", name='" + name + '\'' + ", life=" + life + ", power=" + power + '}';
+        return "Hero{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", life=" + life +
+                ", power=" + power +
+                ", profile=" + profile +
+                '}';
     }
 }

@@ -3,13 +3,8 @@ package example.hibernate.model;
 import javax.persistence.*;
 import java.util.Date;
 
-@Entity
-@Table(name = "hero_profile")
+@Embeddable
 public class HeroProfile {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
     @Column(name = "phone_number")
     private String phoneNumber;
@@ -21,9 +16,6 @@ public class HeroProfile {
     @Column(name = "birth_date")
     private Date dateOfBirth;
 
-    @OneToOne(fetch=FetchType.LAZY, mappedBy="profile")
-    private Hero hero;
-
     public HeroProfile() {
     }
 
@@ -33,17 +25,10 @@ public class HeroProfile {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public void setHero(Hero hero) {
-        this.hero = hero;
-    }
-
-    public Hero getHero() {
-        return hero;
-    }
-
     @Override
     public String toString() {
-        return "HeroProfile{" + "id=" + id + ", phoneNumber='" + phoneNumber + '\'' + ", gender=" + gender + ", " +
-                "dateOfBirth=" + dateOfBirth + '}';
+        return "HeroProfile{" + "phoneNumber='" + phoneNumber + '\'' + ", gender=" + gender +
+                ", dateOfBirth=" + dateOfBirth +
+                '}';
     }
 }

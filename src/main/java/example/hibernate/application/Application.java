@@ -47,14 +47,6 @@ public class Application implements CommandLineRunner {
         Hero hero = repository.findFirstByName("Superman");
 
         System.out.println(hero);
-
-        System.out.println(hero.getProfile());
-
-        System.out.println(hero.getProfile().getHero());
-
-        heroes = repository.findHeroesByGender(Gender.MALE);
-
-        heroes.stream().forEach(System.out::println);
     }
 
     @Transactional
@@ -67,8 +59,6 @@ public class Application implements CommandLineRunner {
         );
 
         Hero superman = new Hero("Superman", 1000, 2000, profile);
-
-        profile.setHero(superman);
 
         repository.save(superman);
     }
