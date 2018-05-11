@@ -7,3 +7,7 @@ create table hero (
   life int,
   power int
 );
+create table nicknames (
+   hero_id int not null primary key,
+   nickname varchar(30)
+);

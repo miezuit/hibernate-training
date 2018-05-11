@@ -50,6 +50,8 @@ public class Application implements CommandLineRunner {
 
         Hero superman = new Hero("Superman", 1000, 2000);
 
+        superman.addNickname("Man of Steel");
+
         repository.save(superman);
     }
 
