@@ -5,6 +5,9 @@ public class CreateHeroCommand {
     private Integer life;
     private Integer power;
 
+    public CreateHeroCommand() {
+    }
+
     public CreateHeroCommand(String name, Integer life, Integer power) {
         this.name = name;
         this.life = life;

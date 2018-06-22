@@ -1,4 +1,4 @@
-package example.hibernate.application;
+package example.hibernate.port.cli;
 
 import example.hibernate.model.Hero;
 import example.hibernate.repository.HeroRepository;
@@ -20,20 +20,20 @@ import java.util.List;
 @ComponentScan("example.hibernate")
 @EnableJpaRepositories("example.hibernate.repository")
 @EntityScan("example.hibernate.model")
-public class Application implements CommandLineRunner {
+public class CliApplication implements CommandLineRunner {
 
     private final HeroRepository repository;
 
     @Autowired
-    public Application(HeroRepository repository) {
+    public CliApplication(HeroRepository repository) {
         this.repository = repository;
     }
 
     @Override
     @Transactional
     public void run(String... args) throws IOException {
-        save();
-        showHeroes();
+        //save();
+        //showHeroes();
     }
 
     @Transactional
@@ -54,7 +54,7 @@ public class Application implements CommandLineRunner {
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args).close();
+        SpringApplication.run(CliApplication.class, args).close();
     }
 
 }

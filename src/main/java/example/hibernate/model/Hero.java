@@ -11,7 +11,7 @@ public class Hero {
     private Integer life;
     private Integer power;
 
-    public Hero() {
+    private Hero() {
     }
 
     public Hero(String name, Integer life, Integer power
@@ -19,6 +19,22 @@ public class Hero {
         this.life = life;
         this.power = power;
         this.name = name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Integer getLife() {
+        return life;
+    }
+
+    public Integer getPower() {
+        return power;
     }
 
     @Override
